@@ -96,7 +96,7 @@ pffiles:
 
 # Build pforth by compiling 'C' source.
 $(PFDICAPP): $(PFINCLUDES) $(PFOBJS)
-	$(LINK) -o $@ $(PFOBJS) $(LDADD) -lm
+	$(LINK) -o $@ $(PFOBJS) $(LDADD) -lm -lwiringPi
 
 # Build basic dictionary image by running newly built pforth and including "system.fth".
 $(PFORTHDIC): $(PFDICAPP)
@@ -107,7 +107,7 @@ $(PFDICDAT): $(PFORTHDIC) $(PFDICAPP)
 	echo 'include $(FTHDIR)/savedicd.fth SDAD BYE' | ./$(PFDICAPP) -d $(PFORTHDIC)
 
 $(PFORTHAPP): $(PFDICDAT) $(PFEMBOBJS)
-	$(LINK) -o $@ $(PFEMBOBJS) $(LDADD) -lm
+	$(LINK) -o $@ $(PFEMBOBJS) $(LDADD) -lm -lwiringPi
 	@echo ""
 	@echo "Standalone pForth executable written to $(PFORTHAPP)"
 

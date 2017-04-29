@@ -38,6 +38,8 @@ typedef long off_t;
 #include <crtdbg.h>
 #endif
 
+#include <wiringPi.h>
+
 #define SYSTEM_LOAD_FILE "system.fth"
 
 /***************************************************************
@@ -1820,6 +1822,26 @@ DBUGX(("Before 0Branch: IP = 0x%x\n", InsPtr ));
             M_DROP;
 DBUGX(("After 0Branch: IP = 0x%x\n", InsPtr ));
             endcase;
+
+	case ID_GPIO:
+                wiringPiSetup();
+                endcase;
+	case ID_PIN_OUT:
+		pinMode(TOS, OUTPUT);
+		M_DROP;
+		endcase;
+	case ID_PIN_LOW:
+		digitalWrite(TOS, 0);
+		M_DROP;
+		endcase;
+	case ID_PIN_HIGH:
+		digitalWrite(TOS, 1);
+		M_DROP;
+		endcase;
+        case ID_DELAY:
+                delay(TOS);
+                M_DROP;
+                endcase;
 
         default:
             ERR("pfCatch: Unrecognised token = 0x");
