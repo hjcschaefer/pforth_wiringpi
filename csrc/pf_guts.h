@@ -285,17 +285,17 @@ enum cforth_primitive_ids
     ID_FILE_RENAME,		/* (RENAME-FILE) */
     ID_FILE_RESIZE,		/* RESIZE-FILE */
     ID_PIN_OUT,
+    ID_PIN_IN,
     ID_PIN_HIGH,
     ID_PIN_LOW,
     ID_GPIO,
     ID_DELAY,
+    ID_PIN_READ,
 /* If you add a word here, take away one reserved word below. */
 #ifdef PF_SUPPORT_FP
 /* Only reserve space if we are adding FP so that we can detect
 ** unsupported primitives when loading dictionary.
 */
-    ID_RESERVED06,
-    ID_RESERVED07,
     ID_RESERVED08,
     ID_RESERVED09,
     ID_RESERVED10,

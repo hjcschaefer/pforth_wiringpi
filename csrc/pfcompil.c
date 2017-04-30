@@ -380,8 +380,10 @@ PForthDictionary pfBuildDictionary( cell_t HeaderSize, cell_t CodeSize )
     CreateDicEntryC( ID_ZERO_BRANCH, "0BRANCH", 0 );
 
     CreateDicEntryC( ID_PIN_OUT, "PIN-OUT", 0 );
+    CreateDicEntryC( ID_PIN_IN, "PIN-IN", 0 );
     CreateDicEntryC( ID_PIN_HIGH, "PIN-HIGH", 0 );
     CreateDicEntryC( ID_PIN_LOW, "PIN-LOW", 0 );
+    CreateDicEntryC( ID_PIN_READ, "PIN-READ", 0 );
     CreateDicEntryC( ID_DELAY, "DELAY", 0 );
     CreateDicEntryC( ID_GPIO, "GPIO", 0 );
 

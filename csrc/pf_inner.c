@@ -1830,6 +1830,10 @@ DBUGX(("After 0Branch: IP = 0x%x\n", InsPtr ));
 		pinMode(TOS, OUTPUT);
 		M_DROP;
 		endcase;
+	case ID_PIN_IN:
+		pinMode(TOS, INPUT);
+		M_DROP;
+		endcase;
 	case ID_PIN_LOW:
 		digitalWrite(TOS, 0);
 		M_DROP;
@@ -1841,6 +1845,15 @@ DBUGX(("After 0Branch: IP = 0x%x\n", InsPtr ));
         case ID_DELAY:
                 delay(TOS);
                 M_DROP;
+                endcase;
+        case ID_PIN_READ:
+                if (digitalRead(TOS) == LOW) {
+                	M_DROP;
+                        M_PUSH(0);
+                } else {
+                        M_DROP;
+                        M_PUSH(1);
+                }
                 endcase;
 
         default:
